@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Byway</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="icon" href="{% static 'assets/logo.svg' %}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <section class="wrapper">
+            <div class="main">
+                <h1 class="left">
+                    <a href="/">
+                        <img src="{% static 'assets/logo.svg' %}" alt="logo">
+                        Byway
+                    </a>
+                </h1>
+    
+                <nav class="right">
+                    <ul>
+                        <li>
+                            <img src="{% static 'assets/wishlist.svg' %}" alt="wishlist">
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/cart.svg' %}" alt="cart">
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/bell.svg' %}" alt="bell">
+                        </li>
+                        <li>
+                            <a href="#" class="profile">J</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>   
+        </section> <!-- header > .wrapper -->
+    </header>
+
+    <section id="spotlight">
+        <section class="wrapper">
+            <div class="main">
+                <div class="left">
+                    <ul class="breadcrumb">
+                        <li>Home</li>
+                        <li><img src="{% static 'assets/short-arrow-right-black.svg' %}" alt="arrow-right"></li>
+                        <li>Categories</li>
+                        <li><img src="{% static 'assets/short-arrow-right-black.svg' %}" alt="arrow-right"></li>
+                        <li class="select">Introduction to User Experience Design</li>
+                    </ul>
+
+                    <h2 class="title">Introduction to User Experience Design</h2>
+                    <p>This course is meticulously crafted to provide you with a foundational 
+                        understanding of the principles, methodologies, and tools that drive 
+                        exceptional user experiences in the digital landscape.</p>
+
+                    <div class="rating">
+                        <span class="star">4.6<img src="{% static 'assets/star.png' %}" alt="star"></span>
+                        <span>(61561 rating)</span>
+                        <span>|</span>
+                        <span>22 Total Hours. 155 Lectures. All levels</span>
+                    </div>
+
+                    <div class="review">
+                        <ul>
+                            <li><img src="{% static 'assets/span-8.svg' %}" alt="span-8"></li>
+                            <li>Created by <b>By Ronald Richards</b></li>
+                        </ul>
+                    </div>
+
+                    <div class="lang">
+                        <ul>
+                            <li><img src="{% static 'assets/language.svg' %}" alt="language"></li>
+                            <li>English, Spanish, Italian, German</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="container">
+                        {% for design in designs %}
+                        <div class="top">
+                            <img src="{{design.image.url}}" alt="image">
+                        </div>
+    
+                        <div class="price">
+                            <ul>
+                                <li class="discounted-price"></li>
+                                <li class="line">{{design.price}}</li>
+                                <li class="clr">{{design.discount}} Off</li>
+                            </ul>
+                        </div>
+    
+                        <div class="btn">
+                            <button class="btn1">Add To Cart</button>
+                            <button class="btn2">Buy Now</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="bottom">
+                        <h4>Share</h4>
+                        <a href=""><img src="{% static 'assets/image 13.png' %}" alt="logos"></a>
+                    </div>
+                </div>
+
+            </div>
+        </section> <!-- #spotlight > .wrapper -->
+    </section> <!-- #spotlight -->
+
+    <section id="description">
+        <section class="wrapper">
+            <div class="tabs">
+                <ul>
+                    <li class="active">Description</li>
+                    <li>Instructor</li>
+                    <li>Syllabus</li>
+                    <li>Reviews</li>
+                </ul>
+            </div>
+
+            <div class="courses">
+                <h3>Course Description</h3>
+                <p>This interactive e-learning course will introduce you to
+                    User Experience (UX) design, the art of creating products 
+                    and services that are intuitive, enjoyable, and user-friendly.
+                    Gain a solid foundation in UX principles and learn to apply 
+                    them in real-world scenarios through engaging modules and 
+                    interactive exercises.
+                </p>
+            </div>
+
+            <div class="certi">
+                <h3>Certification</h3>
+                <p>At Byway, we understand the significance of formal recognition 
+                    for your hard work and dedication to continuous learning. Upon 
+                    successful completion of our courses, you will earn a prestigious 
+                    certification that not only validates your expertise but also 
+                    opens doors to new opportunities in your chosen field.
+                </p>
+            </div>
+
+            <div class="instructor">
+                <h3>Instructor</h3>
+                <h2>Ronald Richards</h2>
+                <small>UI/UX Designer</small>
+
+                <div class="avatar">
+                    <img src="{% static 'assets/span-8.svg' %}" alt="span-8" class="profile">
+                    <ul>
+                        <li>
+                            <img src="{% static 'assets/achive.svg' %}" alt="achive">
+                            <small>40,445 Reviews</small>
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/cap.svg' %}" alt="cap">
+                            <small>500 Students</small>
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/play.svg' %}" alt="play">
+                            <small>15 Courses</small>
+                        </li>
+                    </ul>
+                </div>
+                <p>With over a decade of industry experience, Ronald brings 
+                    a wealth of practical knowledge to the classroom. He has 
+                    played a pivotal role in designing user-centric interfaces 
+                    for renowned tech companies, ensuring seamless and engaging 
+                    user experiences.</p>
+            </div>
+        </section> <!-- #description > .wrapper -->
+    </section> <!-- #description -->
+
+    <section id="syllabus">
+        <section class="wrapper">
+            <div class="smain">
+                <h3>Syllabus</h3>
+                <div class="table">
+                    <ul>
+                        <li>
+                            <div class="left">
+                                <img src="{% static 'assets/arrow-down.svg' %}" alt="arrow-down">
+                                <h6>Introduction to UX Design</h6>
+                            </div>
+                            <div class="right">
+                                <small>5 Lessons</small>
+                                <small>1 hour</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                <img src="{% static 'assets/arrow-down.svg' %}" alt="arrow-down">
+                                <h6>Basic of User-Centered Design</h6>
+                            </div>
+                            <div class="right">
+                                <small>5 Lessons</small>
+                                <small>1 hour</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                <img src="{% static 'assets/arrow-down.svg' %}" alt="arrow-down">
+                                <h6>Elements of User Experience</h6>
+                            </div>
+                            <div class="right">
+                                <small>5 Lessons</small>
+                                <small>1 hour</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                <img src="{% static 'assets/arrow-down.svg' %}" alt="arrow-down">
+                                <h6>Visual Design Principles</h6>
+                            </div>
+                            <div class="right">
+                                <small>5 Lessons</small>
+                                <small>1 hour</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section> <!-- #syllabus > .wrapper -->
+    </section> <!-- #syllabus -->
+
+    <section id="reviews">
+        <section class="wrapper">
+            <h3>Learner Reviews</h3>
+            <div class="rmain">
+                <div class="rleft">
+                    <div class="rtop">
+                        <span><img src="{% static 'assets/star.svg' %}" alt="star">4.6</span>
+                        <small>146,951 reviews</small>
+                    </div>
+                    <ul>
+                        <li>
+                            <img src="{% static 'assets/ratings.png' %}" alt="star">
+                            <span>80%</span>
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/ratings4.png' %}" alt="rating">
+                            <span>10%</span>
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/ratings3.png' %}" alt="rating">
+                            <span>5%</span>
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/ratings2.png' %}" alt="rating">
+                            <span>3%</span>
+                        </li>
+                        <li>
+                            <img src="{% static 'assets/ratings1.png' %}" alt="rating">
+                            <span>2%</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rright">
+                    <ul>
+                        {% for review in reviews %}
+                        <li>
+                            <div class="name">
+                                <img src="{{review.image.url}}" alt="{{review.name}}">
+                                <h5>{{review.name}}</h5>
+                            </div>
+
+                            <div class="text">
+                                <span class="top">
+                                    <span><img src="{{review.star.url}}" alt="star">{{review.rating}}</span>
+                                    <small>{{review.date}}</small>
+                                </span>
+                                <p>{{review.comment}}</p>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <a href="#" class="button">View more Reviews</a>
+                </div>
+            </div>
+        </section> <!-- #reviews > .wrapper -->
+    </section> <!-- #reviews -->
+
+    <section id="testimonials">
+        <section class="wrapper">
+            <div class="top">
+                <h2>What Our Customer Say <br> About Us</h2>
+                <span class="arrow">
+                    <button class="one"><img src="{% static 'assets/short-arrow-left.svg' %}" alt="arrow-left"></button>
+                    <button class="two"><img src="{% static 'assets/short-arrow-right.svg' %}" alt="arrow-right"></button>
+                </span>
+            </div>
+
+            <div class="content">
+                <ul>
+                    {% for testimonial in testimonials %}
+                    <li>
+                        <img class="quotes" src="{{testimonial.icon.url}}" alt="quotes">
+                        <p>{{testimonial.description}}</p>
+                        <div class="bottom">
+                            <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}">
+                            <span class="text">
+                                <h3>{{testimonial.name}}</h3>
+                                <p>{{testimonial.designation}}</p>
+                            </span>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section> <!-- #testimonials > .wrapper -->
+    </section> <!-- #testimonials -->
+
+    <section id="courses">
+        <section class="wrapper">
+            <div class="top">
+                <h2>More Courses Like This</h2>
+                <a href="all_courses.html">See All</a>
+            </div>
+
+            <div class="citems">
+                {% for course in courses %}
+                <div class="item">
+                    <a href="{% url 'web:course' %}"><img class="bg" src="{{course.image.url}}" alt="bg-image"></a>
+                    <h3>{{course.title}}</h3>
+                    <h6>{{course.name}}</h6>
+                    <span class="rating">
+                        <img src="{{course.star_image.url}}" alt="rating">
+                        <small>{{course.rating}}</small>
+                    </span>
+                    <p>{{course.description}}</p>
+                    <h5>{{course.price}}</h5>
+                </div>
+                {% endfor %}
+            </div>
+        </section> <!-- #courses > .wrapper -->
+    </section> <!-- #courses -->
+
+    <footer>
+        <section class="wrapper">
+            <section class="container">
+                <div class="left">
+                    <h1>
+                        <a href="#"><img src="{% static 'assets/hero-image.png' %}" alt="logo"></a>
+                    </h1>
+                    <p>Empowering learners through accessible and engaging online education. <br>
+                    Byway is a leading online learning platform dedicated to <br> providing high quality,
+                    flexible, and affordable educational experiences.</p>
+                </div>
+
+                <div class="right">
+                    <div class="item">
+                        <h3>Get Help</h3>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Latest Articles</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="item">
+                        <h3>Programs</h3>
+                        <ul>
+                            <li><a href="#">Art & Design</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">IT & Software</a></li>
+                            <li><a href="#">Languages</a></li>
+                            <li><a href="#">Programming</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="item">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><a href="#">Address: 123 Main Street, Anytown, CA 12345</a></li>
+                            <li><a href="#">Tel: +(123) 456-7890</a></li>
+                            <li><a href="#">Mail: bywayedu@webkul.in</a></li>
+                        </ul>
+                        <span class="logos">
+                            <a href="https://www.facebook.com/"><small></small></a>
+                            <a href="https://www.github.com/"><small></small></a>    
+                            <a href="https://www.google.com/"><small></small></a>    
+                            <a href="https://www.twitter.com/"><small></small></a>    
+                            <a href="https://www.microsoft.com/"><small></small></a>
+                        </span>
+                    </div>
+
+                </div>
+            </section> <!-- footer > .wrapper > .container -->
+        </section> <!-- footer > .wrapper -->
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

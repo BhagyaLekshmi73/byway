@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <section class="wrapper">
+            <div class="main">
+                <h1 class="left">
+                    <a href="/">
+                        <img src="{% static 'assets/logo.svg' %}" alt="logo">
+                        Byway
+                    </a>
+                </h1>
+    
+                <nav class="right">
+                    <ul>
+                        <li>
+                            <img src="{% static 'assets/cart.svg' %}" alt="cart">
+                        </li>
+                        <li>
+                            <a href="#" class="btn1">Log In</a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn2">Sign Up</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>   
+        </section> <!-- header > .wrapper -->
+    </header>
+
+    <section id="courses">
+        <section class="wrapper">
+            <div class="top">
+                <h2>Courses</h2>
+            </div>
+
+            <div class="citems">
+                {% for course in courses %}
+                <div class="item">
+                    <a href="{% url 'web:course' %}"><img class="bg" src="{{course.image.url}}" alt="bg-image"></a>
+                    <h3>{{course.title}}</h3>
+                    <h6>{{course.name}}</h6>
+                    <span class="rating">
+                        <img src="{{course.star_image.url}}" alt="rating">
+                        <small>{{course.rating}}</small>
+                    </span>
+                    <p>{{course.description}}</p>
+                    <h5>{{course.price}}</h5>
+                </div>
+                {% endfor %}
+            </div>
+        </section> <!-- #courses > .wrapper -->
+    </section> <!-- #courses -->
+
+{% endblock %}    

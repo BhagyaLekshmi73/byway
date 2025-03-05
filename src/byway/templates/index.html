@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Byway</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'assets/logo.svg' %}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <section class="wrapper">
+            <div class="main">
+                <h1 class="left">
+                    <a href="/">
+                        <img src="{% static 'assets/logo.svg' %}" alt="logo">
+                        Byway
+                    </a>
+                </h1>
+    
+                <nav class="right">
+                    <ul>
+                        <li>
+                            <img src="{% static 'assets/cart.svg' %}" alt="cart">
+                        </li>
+                        <li>
+                            <a href="#" class="btn1">Log In</a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn2">Sign Up</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>   
+        </section> <!-- header > .wrapper -->
+    </header>
+
+    <section id="spotlight">
+        <section class="wrapper">
+            <div class="container">
+                <div class="content">
+                    <h2>Unlock Your Potential <br>with Byway</h2>
+                    <p>Welcome to Byway, where learning knows no bounds. We believe that
+                        education is the key to personal and professional growth, and we're 
+                        here to guide you on your journey to success.
+                    </p>
+                    <a href="#"><button>Start your instructor journey</button></a>
+                </div>
+                <div class="img-container">
+                    <img src="{% static 'assets/spotlight.png' %}" alt="spotlight-image">
+                </div>
+            </div>
+        </section> <!-- #spotlight > .wrapper -->
+    </section> <!-- #spotlight -->
+
+    <section id="list">
+        <section class="wrapper">
+            <ul>
+                {% for list in lists %}
+                <li>
+                    <h4>{{list.number}}</h4>
+                    <p>{{list.description}}</p>
+                </li>
+                {% endfor %}
+            </ul>    
+        </section> <!-- #list > .wrapper -->
+    </section> <!-- #list -->
+
+    <section id="category">
+        <section class="wrapper">
+            <div class="top">
+                <h2>Top Categories</h2>
+                <a href="#">See All</a>
+            </div>
+
+            <div class="items">
+                {% for category in categories %}
+                <div class="item">
+                    <a href="{% url 'web:category' %}">
+                        <img src="{{category.image.url}}" alt="{{category.title}}">
+                        <h3>{{category.title}}</h3>
+                        <p>{{category.course_no}}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </section> <!-- #category > .wrapper -->
+    </section> <!-- #category -->
+
+    <section id="courses">
+        <section class="wrapper">
+            <div class="top">
+                <h2>Top Courses</h2>
+                <a href="{% url 'web:all_courses' %}">See All</a>
+            </div>
+
+            <div class="citems">
+                {% for course in courses %}
+                <div class="item">
+                    <a href="{% url 'web:course' %}"><img class="bg" src="{{course.image.url}}" alt="bg-image"></a>
+                    <h3>{{course.title}}</h3>
+                    <h6>{{course.name}}</h6>
+                    <span class="rating">
+                        <img src="{{course.star_image.url}}" alt="rating">
+                        <small>{{course.rating}}</small>
+                    </span>
+                    <p>{{course.description}}</p>
+                    <h5>{{course.price}}</h5>
+                </div>
+                {% endfor %}
+            </div>
+        </section> <!-- #courses > .wrapper -->
+    </section> <!-- #courses -->
+
+    <section id="instructor">
+        <section class="wrapper">
+            <div class="top">
+                <h2>Top Instructors</h2>
+                <a href="#">See All</a>
+            </div>
+
+            <div class="sitems">
+                {% for instructor in instructors %}
+                <div class="item">
+                    <img class="model" src="{{instructor.image.url}}" alt="{{instructor.name}}">
+                    <h3>{{instructor.name}}</h3>
+                    <h5>{{instructor.designation}}</h5>
+                    <div class="bottom">
+                        <span>
+                            <img src="{{instructor.star.url}}" alt="star">
+                            <small>{{instructor.rate}}</small>
+                        </span>
+                        <h4>{{instructor.count}}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section> <!-- #instructor > .wrapper -->
+    </section> <!-- #instructor -->
+
+    <section id="testimonials">
+        <section class="wrapper">
+            <div class="top">
+                <h2>What Our Customer Say <br> About Us</h2>
+                <span class="arrow">
+                    <button class="one"><img src="{% static 'assets/short-arrow-left.svg' %}" alt="arrow-left"></button>
+                    <button class="two"><img src="{% static 'assets/short-arrow-right.svg' %}" alt="arrow-right"></button>
+                </span>
+            </div>
+
+            <div class="content">
+                <ul>
+                    {% for testimonial in testimonials %}
+                    <li>
+                        <img class="quotes" src="{{testimonial.icon.url}}" alt="quotes">
+                        <p>{{testimonial.description}}</p>
+                        <div class="bottom">
+                            <img src="{{testimonial.image.url}}" alt="{{testimonial.name}}">
+                            <span class="text">
+                                <h3>{{testimonial.name}}</h3>
+                                <p>{{testimonial.designation}}</p>
+                            </span>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section> <!-- #testimonials > .wrapper -->
+    </section> <!-- #testimonials -->
+
+    <section id="features">
+        <section class="wrapper">
+            <div class="content">
+                <div class="left">
+                    <img src="{% static 'assets/model-4.jpg' %}" alt="model-4">
+                </div>
+                <div class="content_box">
+                    <h3>Become an Instructor</h3>
+                    <p>Instructor from around the world teach millions of students on Byway.
+                        We provide the tool and skills to teach what you love.
+                    </p>
+                    <a href="#" class="button">
+                        Start Your Instructor journey
+                        <img src="{% static 'assets/arrow-right.svg' %}" alt="arrow-right">
+                    </a>
+                </div>
+            </div> 
+
+            <div class="content bottom">
+                <div class="content_box">
+                    <h3>Transform your life through education</h3>
+                    <p>Leraners around the world are launching new careers, advancing in 
+                        their fields, and enriching their lives.
+                    </p>
+                    <a href="#" class="button">
+                        Checkout Courses
+                        <img src="{% static 'assets/arrow-right.svg' %}" alt="arrow-right">
+                    </a>
+                </div>
+                <div class="right">
+                    <img src="{% static 'assets/model-6.jpg' %}" alt="model-6">
+                </div>
+            </div> 
+        </section> <!-- #features > .wrapper -->
+    </section> <!-- #features -->
+
+    <footer>
+        <section class="wrapper">
+            <section class="container">
+                <div class="left">
+                    <h1>
+                        <a href="#"><img src="{% static 'assets/hero-image.png' %}" alt="logo"></a>
+                    </h1>
+                    <p>Empowering learners through accessible and engaging online education. <br>
+                    Byway is a leading online learning platform dedicated to <br> providing high quality,
+                    flexible, and affordable educational experiences.</p>
+                </div>
+
+                <div class="right">
+                    <div class="item">
+                        <h3>Get Help</h3>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Latest Articles</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="item">
+                        <h3>Programs</h3>
+                        <ul>
+                            <li><a href="#">Art & Design</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">IT & Software</a></li>
+                            <li><a href="#">Languages</a></li>
+                            <li><a href="#">Programming</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="item">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><a href="#">Address: 123 Main Street, Anytown, CA 12345</a></li>
+                            <li><a href="#">Tel: +(123) 456-7890</a></li>
+                            <li><a href="#">Mail: bywayedu@webkul.in</a></li>
+                        </ul>
+                        <span class="logos">
+                            <a href="https://www.facebook.com/"><small></small></a>
+                            <a href="https://www.github.com/"><small></small></a>    
+                            <a href="https://www.google.com/"><small></small></a>    
+                            <a href="https://www.twitter.com/"><small></small></a>    
+                            <a href="https://www.microsoft.com/"><small></small></a>
+                        </span>
+                    </div>
+
+                </div>
+            </section> <!-- footer > .wrapper > .container -->
+        </section> <!-- footer > .wrapper -->
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
