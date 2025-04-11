@@ -1,0 +1,287 @@
+{% extends 'web/base.html' %} {% load static %} {% block title %}ByWay{% endblock %}
+{% block content %}
+<!-- sportlight -->
+<section class="sportlight">
+  <div class="wrapper">
+    <div class="left">
+      <h1>Unlock Your Potential with Byway</h1>
+      <p>
+        Welcome to Byway, where learning knows no bounds. We believe that
+        education is the key to personal and professional growth, and we're here
+        to guide you on your journey to success.
+      </p>
+      <a href="" class="button"> Start your instructor journey </a>
+    </div>
+    <div class="right">
+      <div class="image-wrapper">
+        <img
+          src="{% static 'assets/images/sportlight.png' %}"
+          alt="Sportlight image"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- couse-details -->
+
+<section class="course-counts">
+  <div class="wrapper">
+    <div class="items">
+      <div class="item">
+        <h2>250+</h2>
+        <p>Courses by our best mentors</p>
+      </div>
+      <div class="item">
+        <h2>1000+</h2>
+        <p>Courses by our best mentors</p>
+      </div>
+      <div class="item">
+        <h2>15+</h2>
+        <p>Courses by our best mentors</p>
+      </div>
+      <div class="item">
+        <h2>2400+</h2>
+        <p>Courses by our best mentors</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- categories-section -->
+
+<section class="main">
+  <div class="wrapper">
+    <!-- top categories -->
+    <div class="top-categories">
+      <div class="top">
+        <h3>Top Categories</h3>
+        <a href="#" class="see-all">See All</a>
+      </div>
+      <div class="widgets">
+        {% for category in categories %}
+        <a href="{% url 'web:category_details' category.id %}" class="card">
+          <div class="content-wrapper">
+            <span class="round-bg">
+              <img src="{{category.icon.url}}" alt="astrology-icon" />
+            </span>
+            <h4>{{category.name}}</h4>
+            <p>{{category.courses.count}}</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- top courses -->
+    <div class="top-courses">
+      <div class="top">
+        <h3>Top Courses</h3>
+        <a href="{% url 'web:top_courses' %}" class="see-all">See All</a>
+      </div>
+      <div class="widgets">
+        {% for course in courses|slice:"4" %}
+        <a href="{% url 'web:course_details' course.id %}" class="card">
+          <div class="content-wrapper">
+            <div class="image-wrapper">
+              <img src="{{course.image.url}}" alt="Course image" />
+            </div>
+            <h5>{{ course.title|truncatewords:10 }}</h5>
+            <p>{{ course.instructor }}</p>
+            <div class="rating-container">
+              <span class="rating">{{ course.rating }}</span>
+              <span class="star star-rating-container"></span>
+              <small>({{ course.rating_count }} Ratings)</small>
+            </div>
+            <p class="duration">{{ course.duration }}</p>
+            <h4>${{ course.discounted_price }}</h4>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- top instructors -->
+    <div class="top-instructors">
+      <div class="top">
+        <h3>Top Instructors</h3>
+        <a href="#" class="see-all" id="see-all-button">See All</a>
+      </div>
+      <div class="widgets">
+        {% for instructor in top_instructors %}
+        <a href="{% url 'web:instructor_courses' instructor.id %}" class="card">
+          <div class="content-wrapper">
+            <div class="image-wrapper">
+              <img src="{{ instructor.image.url }}" alt="Instructor image" />
+            </div>
+            <h5>{{ instructor.name }}</h5>
+            <small>{{ instructor.designation }}</small>
+            <span class="line"></span>
+            <div class="rating-box">
+              <span class="star-box">
+                <img
+                  src="{% static 'assets/icons/star.svg' %}"
+                  alt="Star icon"
+                />
+                <label for="">{{ instructor.rating }}</label>
+              </span>
+              <span class="students-count">
+                <small>{{ instructor.students }} Students</small>
+              </span>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+
+        <!-- Hidden instructors -->
+        <div
+          class="top-instructors"
+          id="remaining-instructors"
+          style="display: none"
+        >
+          <div class="widgets">
+            {% for instructor in remaining_instructors %}
+            <a
+              href="{% url 'web:instructor_courses' instructor.id %}"
+              class="card"
+            >
+              <div class="content-wrapper">
+                <div class="image-wrapper">
+                  <img src="{{ instructor.image.url }}" alt="image" />
+                </div>
+                <h5>{{ instructor.name }}</h5>
+                <small>{{ instructor.designation }}</small>
+                <span class="line"></span>
+                <div class="rating-box">
+                  <span class="star-box">
+                    <img
+                      src="{% static 'assets/icons/star.svg' %}"
+                      alt="star"
+                    />
+                    <label for="">{{ instructor.rating }}</label>
+                  </span>
+                  <span class="students-count">
+                    <small>{{ instructor.students }}</small>
+                  </span>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- testimonials -->
+<section class="testimonials">
+  <div class="wrapper">
+    <div class="top">
+      <div class="heading-container">
+        <h3>What Our Customer Say About Us</h3>
+      </div>
+      <div class="navigation">
+        <span
+          class="custom-swiper-button-prev"
+          role="button"
+          aria-label="Previous slide"
+          tabindex="0"
+        >
+          <img
+            src="{% static 'assets/icons/short-arrow-left.svg' %}"
+            alt="left-arrow"
+          />
+        </span>
+        <span
+          class="custom-swiper-button-next"
+          role="button"
+          aria-label="Next slide"
+          tabindex="0"
+        >
+          <img
+            src="{% static 'assets/icons/short-arrow-right.svg' %}"
+            alt="right-arrow"
+          />
+        </span>
+      </div>
+    </div>
+    <div class="contents">
+      <div class="swiper">
+        <div class="items swiper-wrapper">
+          {% for testimonial in testimonials %}
+          <a href="#" class="item swiper-slide">
+            <span class="quote">
+              <img
+                src="{% static 'assets/icons/quotes.svg' %}"
+                alt="quote-icon"
+              />
+            </span>
+            <p>"{{testimonial.description}}"</p>
+            <div class="author-info">
+              <span class="author-profile">
+                <img src="{{ testimonial.image.url}}" alt="image" />
+              </span>
+              <div class="text">
+                <h5>{{testimonial.name}}</h5>
+                <small>{{testimonial.designation}}</small>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- more -->
+
+<section class="more-about">
+  <div class="wrapper">
+    <div class="top-section">
+      <div class="left-img">
+        <img src="{% static 'assets/images/model-4.jpg' %}" alt="image" />
+      </div>
+      <div class="right-content">
+        <h4>Become an Instructor</h4>
+        <p>
+          Instructors from around the world teach millions of students on Byway.
+          We provide the tools and skills to teach what you love.
+        </p>
+        <a href="" class="button">
+          <small>Start Your Instructor Journey</small>
+          <span
+            ><img src="{% static 'assets/icons/arrow-right.svg' %}" alt="icon"
+          /></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="bottom-section">
+      <div class="left-content">
+        <h4>Transform your life through education</h4>
+        <p>
+          Learners around the world are launching new careers, advancing in
+          their fields, and enriching their lives.
+        </p>
+        <a href="" class="button">
+          <small>Checkout Courses</small>
+          <span
+            ><img src="{% static 'assets/icons/arrow-right.svg' %}" alt="icon"
+          /></span>
+        </a>
+      </div>
+      <div class="right-img">
+        <img src="{% static 'assets/images/model-6.jpg' %}" alt="image" />
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script type="module" src="{% static 'javascript/starRating.js' %}"></script>
+<script src="{% static 'javascript/swiper.js' %}"></script>
+<script src="{% static 'javascript/home.js' %}"></script>
+{% endblock %}
