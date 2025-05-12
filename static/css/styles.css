@@ -2825,6 +2825,7 @@ footer .wrapper .items .item4 .social-media ul li a img {
   .sportlight-details .wrapper .cart-box {
     /* position: static; */
     top: -45px;
+    width: 37%;
   }
 
   .sportlight-details .wrapper .cart-box .top-section .image-wrapper {
@@ -2832,8 +2833,21 @@ footer .wrapper .items .item4 .social-media ul li a img {
   }
 
   .main-details .wrapper .button-container .boxes {
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
+
+  .main-details .wrapper .button-container .boxes .box button {
+    width: 100%;
+    height: 57px;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 18px 21px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 
   .main-details .wrapper .Description .text-wrapper {
     width: 100%;
@@ -3105,7 +3119,7 @@ footer .wrapper .items .item4 .social-media ul li a img {
 
 /* 680  */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 640px) {
   .sportlight-details .wrapper .cart-box .top-section .image-wrapper {
     height: 134px;
   }
@@ -3132,6 +3146,8 @@ footer .wrapper .items .item4 .social-media ul li a img {
     width: 120px;
     height: 50px;
   }
+
+  
 
   .main-details .wrapper .reviews .reviews-wrapper .left {
     width: 50%;
@@ -3245,7 +3261,11 @@ footer .wrapper .items .item4 .social-media ul li a img {
   .main-details .wrapper .button-container .boxes .box button {
     font-size: 12px;
     padding: 10px 20px;
-    width: 100%;
+    width: 100px;
+  }
+
+  .main-details .wrapper .button-container .boxes {
+    flex-wrap: wrap;
   }
 
   .main-details .wrapper .Description .text-wrapper {
